@@ -1,3 +1,3 @@
-## 0.0.1
+## 0.0.1-dev
 
-* TODO: Describe initial release.
+• Created Navbar that is responsive, for mobile and desktop

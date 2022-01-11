@@ -1,6 +1,6 @@
 name: ruki_nav_bar
 description: A Responsive navigation bar for web applications
-version: 0.0.1
+version: 0.0.1-dev
 homepage: https://github.com/RookiePlayers/ruki_nav_bar.git
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  auto_size_text: 3.0.0-nullsafety.0
+  auto_size_text: ^3.0.0-nullsafety.0
 
 dev_dependencies:
   flutter_test:
