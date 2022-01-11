@@ -13,7 +13,8 @@ class NavDrawer extends StatelessWidget {
   final Widget? drawerBody;
   final Widget? drawerFooter;
   final double? itemSpacing;
-  final ShapeDecoration? customDecoration;
+  final TextStyle? navTextStyle;
+  final BoxDecoration? customDecoration;
   final NavDrawerMode drawerMode;
   final PageIndicator? pageIndicator;
   final NavItemPosition? itemsPosition;
@@ -23,6 +24,7 @@ class NavDrawer extends StatelessWidget {
       {Key? key,
         this.onClose,
       required this.navItems,
+        this.navTextStyle,
         this.itemSpacing,
         this.itemsPosition = NavItemPosition.center,
         this.customDecoration,
@@ -70,6 +72,7 @@ class NavDrawer extends StatelessWidget {
                           margin:  EdgeInsets.symmetric(vertical: itemSpacing??10),
                           child: NavListTile(
                             customDecoration: customDecoration,
+                              navTextStyle: navTextStyle,
                               pageIndicator: pageIndicator!,
                               indicatorLineThickness: indicatorLineThickness,
                               selectedPageIndex:

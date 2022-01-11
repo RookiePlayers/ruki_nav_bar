@@ -15,7 +15,7 @@ class MobNavBar extends NavBar {
     double? indicatorLineThickness,
     NavItemPosition? itemPosition,
     String? titleText,
-    ShapeDecoration? customDecoration,
+    BoxDecoration? customDecoration,
     Widget? drawerHeader,
     Widget? drawerBody,
     Widget? drawerFooter,

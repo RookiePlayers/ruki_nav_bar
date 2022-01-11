@@ -21,7 +21,7 @@ class DefaultNavBar extends NavBar {
       NavDrawerMode? drawerMode,
       Widget? fab,
       bool? showFab,
-        ShapeDecoration? customDecoration,
+        BoxDecoration? customDecoration,
         Widget? drawerHeader,
         Widget? drawerBody,
         Widget? drawerFooter,
@@ -128,6 +128,7 @@ class DefaultNavBar extends NavBar {
               : Alignment.centerRight,
           child: NavListTile(
             data: e,
+            navTextStyle: navTextStyle,
             customDecoration: customDecoration,
             pageIndicator: pageIndicator??PageIndicator.none,
             indicatorLineThickness: indicatorLineThickness,

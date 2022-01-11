@@ -14,7 +14,7 @@ class NavListTile extends StatefulWidget {
   final PageIndicator? pageIndicator;
   final double? indicatorLineThickness;
   final bool? enableRouteNavigation;
-  final ShapeDecoration? customDecoration;
+  final BoxDecoration? customDecoration;
   const NavListTile(
       {Key? key,
       this.enableRouteNavigation = true,
@@ -123,11 +123,12 @@ class _NavListTileState extends State<NavListTile> {
                         PageTrackerContext.of<int>(context).currentData ==
                             widget.data.relativeIndex
                     ? (
+                widget.customDecoration !=null ?  widget.customDecoration!.copyWith( color: widget.pageIndicator == PageIndicator.filled ? (widget.customDecoration?.color ?? widget.data.activeColor) : Colors.transparent) :
                         BoxDecoration(
-                            borderRadius: BorderRadius.circular(2),
+                            borderRadius: BorderRadius.circular(8),
                             border: Border.all(color: widget.pageIndicator == PageIndicator.filled ? Colors.transparent : widget.data.activeColor??Colors.black,width: 2),
-                            color: widget.pageIndicator == PageIndicator.filled ? widget.data.activeColor : Colors.transparent))
-                    : widget.customDecoration,
+                            color: widget.pageIndicator == PageIndicator.filled ? widget.data.activeColor : Colors.transparent)) : null
+                    ,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -158,6 +159,7 @@ class _NavListTileState extends State<NavListTile> {
                           ),
                           AutoSizeText(widget.data.label,
                               maxLines: 1,
+                              minFontSize: 10,
                               style: widget.data.labelStyle != null
                                   ? widget.data.labelStyle!.copyWith(
                                       color: PageTrackerContext.of<int>(context)
@@ -176,7 +178,7 @@ class _NavListTileState extends State<NavListTile> {
                                               : widget.data.activeColor
                                           : Theme.of(context)
                                               .textTheme
-                                              .bodyText1!
+                                              .bodyText1!.copyWith()
                                               .color)),
                         ],
                       ),

@@ -23,7 +23,7 @@ class SiteNavBar {
   final TextStyle?  navTextStyle;
   final PageIndicator? pageIndicator;
   final double? indicatorLineThickness;
-  final ShapeDecoration? customDecoration;
+  final BoxDecoration? customDecoration;
   final Widget? drawerHeader;
   final Widget? drawerBody;
   final Widget? drawerFooter;
@@ -58,7 +58,7 @@ class SiteNavBar {
     Widget? title,
     double? height,
     Widget? fab,
-    ShapeDecoration? customDecoration,
+    BoxDecoration? customDecoration,
     Widget? drawerHeader,
     Widget? drawerBody,
     Widget? drawerFooter,
@@ -110,7 +110,7 @@ class SiteNavBar {
         PageIndicator? pageIndicator,
         double? indicatorLineThickness,
         NavItemPosition? itemPosition,
-        ShapeDecoration? customDecoration,
+        BoxDecoration? customDecoration,
         Widget? drawerHeader,
         Widget? drawerBody,
         Widget? drawerFooter,

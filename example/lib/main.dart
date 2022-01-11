@@ -20,11 +20,12 @@ class MyApp extends StatelessWidget {
               color: Colors.grey[100],
             ),
             indicatorLineThickness: 4,
-
+            customDecoration: BoxDecoration(borderRadius: BorderRadius.circular(30),border: Border.all(width: 2,color: Colors.blue) ),
             drawerMode: NavDrawerMode.full,
             pageIndicator: PageIndicator.outlined,
             itemPosition: NavItemPosition.right,
             drawerHeader: Container(),
+            navTextStyle: TextStyle(fontSize: 10),
             drawerFooter: Container(height: 50,color: Colors.grey[200],),
             leading: const Text("Logo",style: TextStyle(color: Colors.red,fontSize: 30),),
             navItemSpacing: 8,

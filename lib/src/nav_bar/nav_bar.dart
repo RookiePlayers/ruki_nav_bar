@@ -19,7 +19,7 @@ abstract class NavBar extends PreferredSize {
   final TextStyle? navTextStyle;
   final PageIndicator? pageIndicator;
   final double? indicatorLineThickness;
-  final ShapeDecoration? customDecoration;
+  final BoxDecoration? customDecoration;
   final Widget? drawerHeader;
   final Widget? drawerBody;
   final Widget? drawerFooter;
@@ -84,6 +84,7 @@ abstract class NavBar extends PreferredSize {
         },
         customDecoration: customDecoration,
             drawerHeader: drawerHeader,
+        navTextStyle: navTextStyle,
             drawerBody: drawerBody,
             itemsPosition: itemsPosition,
             drawerFooter: drawerFooter,
