@@ -11,12 +11,20 @@ class MobNavBar extends NavBar {
     Key? key,
     required Widget title,
     double? height,
+    PageIndicator? pageIndicator,
+    double? indicatorLineThickness,
     NavItemPosition? itemPosition,
     String? titleText,
+    ShapeDecoration? customDecoration,
+    Widget? drawerHeader,
+    Widget? drawerBody,
+    Widget? drawerFooter,
     required Widget body,
+    double? navItemSpacing,
     NavDrawerMode? drawerMode,
     Color? backgroundColor,
     Widget? fab,
+    TextStyle? navTextStyle,
     bool? showFab,
     double? MAX_PAGE_WIDTH,
     Widget? leading,
@@ -28,6 +36,14 @@ class MobNavBar extends NavBar {
     title: title,
     body: body,
     fab: fab,
+      customDecoration: customDecoration,
+      drawerBody: drawerBody,
+      drawerFooter: drawerFooter,
+      drawerHeader: drawerHeader,
+      indicatorLineThickness: indicatorLineThickness,
+      pageIndicator: pageIndicator,
+    navTextStyle: navTextStyle,
+    navItemSpacing: navItemSpacing??10,
     showFab: showFab??false,
     height: height??kToolbarHeight,
     MAX_PAGE_WIDTH: MAX_PAGE_WIDTH??1140,
@@ -46,6 +62,23 @@ class MobNavBar extends NavBar {
     // TODO: implement buildNavBar
     return AppBar(
       elevation: 0,
+      leadingWidth: enableDrawer==true ? 120 : 75,
+      leading: Padding(
+        padding: const EdgeInsets.only(left:5.0),
+        child: Center(child: Row(
+          children: [
+            enableDrawer ?? false
+                ? drawerMode == NavDrawerMode.left ? IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                scaffoldKey.currentState!.openDrawer();
+              },
+            ) : Container()
+                : Container(),
+            leading??Container()
+          ],
+        )),
+      ),
       iconTheme: Theme.of(context)
           .iconTheme
           .copyWith(color: Theme.of(context).textTheme.bodyText1!.color),
@@ -59,12 +92,17 @@ class MobNavBar extends NavBar {
           ),
         ],
       ) ,
-      actions: [...?actions,enableDrawer??false ? IconButton(
-      icon: new Icon(Icons.menu),
-      onPressed: () {
-        scaffoldKey.currentState!.openEndDrawer();
-      },
-    ):Container(),],
+      actions: [
+        ...?actions,
+        enableDrawer ?? false
+            ? drawerMode == NavDrawerMode.right || drawerMode == NavDrawerMode.full ? IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {
+            scaffoldKey.currentState!.openEndDrawer();
+          },
+        ) : Container()
+            : Container(),
+      ],
     );
   }
 

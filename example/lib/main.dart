@@ -15,7 +15,24 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: LayoutBuilder(
         builder: (_,constraints){
-          return SiteNavBar.get(body: Container(),).getNavBar(DeviceType.desktop.currentDevice(constraints.maxWidth));
+          return SiteNavBar.get(
+            body: Container(
+              color: Colors.grey[100],
+            ),
+            indicatorLineThickness: 4,
+            drawerMode: NavDrawerMode.full,
+            pageIndicator: PageIndicator.outlined,
+            itemPosition: NavItemPosition.right,
+            drawerHeader: Container(),
+            drawerFooter: Container(height: 50,color: Colors.grey[200],),
+            leading: const Text("Logo",style: TextStyle(color: Colors.red,fontSize: 30),),
+            navItemSpacing: 8,
+            navItems: [
+              NavItem(relativeIndex: 0, label: "Home", activeColor: Colors.blue, onTap: (){}),
+              NavItem(relativeIndex: 1, label: "About us",activeColor: Colors.blue, onTap: (){}),
+              NavItem(relativeIndex: 2, label: "Contact us",activeColor: Colors.blue, onTap: (){}),
+            ]
+          ).getNavBar(DeviceType.desktop.currentDevice(constraints.maxWidth));
         },
       )
     );
