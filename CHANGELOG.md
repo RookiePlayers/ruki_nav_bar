@@ -1,4 +1,4 @@
-## 0.0.2-dev
+## 0.0.3-dev
 
 ** Created Navbar that is responsive, for mobile and desktop **
 ** Fixed NavItems Positioning, left,center,right **
