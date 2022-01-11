@@ -78,9 +78,9 @@ class MyApp extends StatelessWidget {
 |type|DeviceType|
 |height|double|
 |title|Widget|
-|itemsPosition|NavItemPosition enum|
+|itemsPosition|NavItemPosition|
 |enableDrawer|bool|
-|MAX_PAGE_WIDTH|doubls|
+|MAX_PAGE_WIDTH|double|
 |titleText|String|
 |backgroundColor|Color|
 |leading|Widget|
