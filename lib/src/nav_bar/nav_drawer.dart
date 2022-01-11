@@ -52,12 +52,12 @@ class NavDrawer extends StatelessWidget {
                     children: [Container()],
                   ),
             ),
-            Padding(
+            drawerMode == NavDrawerMode.full ? Padding(
               padding: const EdgeInsets.all(12.0),
               child: IconButton(onPressed: (){
                 if(onClose!=null) onClose!();
               }, icon: const Icon(Icons.clear_rounded)),
-            ),
+            ):Container(),
             Container(
               height: drawerMode == NavDrawerMode.full ? MediaQuery.of(context).size.height * 0.8 : null,
               padding: const EdgeInsets.symmetric(horizontal: 20),
