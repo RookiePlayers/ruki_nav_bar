@@ -1,6 +1,6 @@
 name: ruki_nav_bar
 description: A Responsive navigation bar for web applications
-version: 0.0.2-dev
+version: 0.0.4-dev
 homepage: https://github.com/RookiePlayers/ruki_nav_bar.git
 
 environment:

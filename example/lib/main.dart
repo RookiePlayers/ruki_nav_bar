@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
               color: Colors.grey[100],
             ),
             indicatorLineThickness: 4,
+
             drawerMode: NavDrawerMode.full,
             pageIndicator: PageIndicator.outlined,
             itemPosition: NavItemPosition.right,

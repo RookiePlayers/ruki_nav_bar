@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ruki_nav_bar/src/nav_bar/page_tracker_context.dart';
 import '../../ruki_nav_bar.dart';
-import 'default_nav_bar.dart';
-import 'device_type.dart';
-import 'mob_nav_bar.dart';
-import 'nav_bar.dart';
-import 'nav_drawer.dart';
-import 'nav_item.dart';
 
 class SiteNavBar {
   static SiteNavBar? _navBarInstance;
@@ -113,6 +107,16 @@ class SiteNavBar {
 
   Widget getNavBar(
     DeviceType device, {
+        PageIndicator? pageIndicator,
+        double? indicatorLineThickness,
+        NavItemPosition? itemPosition,
+        ShapeDecoration? customDecoration,
+        Widget? drawerHeader,
+        Widget? drawerBody,
+        Widget? drawerFooter,
+        double? navItemSpacing,
+        NavItemPosition? itemsPosition,
+        TextStyle? navTextStyle,
     bool? showFab,
     Widget? title,
     String? titleText,
@@ -134,18 +138,18 @@ class SiteNavBar {
             fab: fab ?? this.fab,
             showFab: showFab ?? this.showFab,
             body: body,
-            customDecoration: customDecoration,
-            drawerBody: drawerBody,
-            drawerFooter: drawerFooter,
-            drawerHeader: drawerHeader,
-            indicatorLineThickness: indicatorLineThickness,
-            pageIndicator: pageIndicator,
-            navItemSpacing: navItemSpacing,
+            customDecoration: customDecoration??this.customDecoration,
+            drawerBody: drawerBody??this.drawerBody,
+            drawerFooter: drawerFooter??this.drawerFooter,
+            drawerHeader: drawerHeader??this.drawerHeader,
+            indicatorLineThickness: indicatorLineThickness ?? this.indicatorLineThickness,
+            pageIndicator: pageIndicator ?? this.pageIndicator,
+            navItemSpacing: navItemSpacing ?? this.navItemSpacing,
             MAX_PAGE_WIDTH: MAX_PAGE_WIDTH,
-            itemPosition: itemsPosition,
+            itemPosition: itemsPosition ?? this.itemsPosition,
             drawerMode: drawerMode ?? this.drawerMode,
             height: height ?? this.height,
-            navTextStyle: navTextStyle,
+            navTextStyle: navTextStyle ?? this.navTextStyle,
             titleText: titleText ?? this.titleText,
             backgroundColor: backgroundColor ?? this.backgroundColor,
             actions: actions ?? this.actions,
@@ -156,21 +160,21 @@ class SiteNavBar {
             title: title ?? this.title,
             items: items,
             fab: fab ?? this.fab,
+            enableDrawer: enableDrawer ??this.enableDrawer,
             showFab: showFab ?? this.showFab,
             body: body,
-            customDecoration: customDecoration,
-            drawerBody: drawerBody,
-            drawerFooter: drawerFooter,
-            drawerHeader: drawerHeader,
-            indicatorLineThickness: indicatorLineThickness,
-            pageIndicator: pageIndicator,
-            enableDrawer: enableDrawer ?? this.enableDrawer,
-            navTextStyle: navTextStyle,
-            navItemSpacing: navItemSpacing,
+            customDecoration: customDecoration??this.customDecoration,
+            drawerBody: drawerBody??this.drawerBody,
+            drawerFooter: drawerFooter??this.drawerFooter,
+            drawerHeader: drawerHeader??this.drawerHeader,
+            indicatorLineThickness: indicatorLineThickness ?? this.indicatorLineThickness,
+            pageIndicator: pageIndicator ?? this.pageIndicator,
+            navItemSpacing: navItemSpacing ?? this.navItemSpacing,
             MAX_PAGE_WIDTH: MAX_PAGE_WIDTH,
-            itemPosition: itemsPosition,
+            itemPosition: itemsPosition ?? this.itemsPosition,
             drawerMode: drawerMode ?? this.drawerMode,
             height: height ?? this.height,
+            navTextStyle: navTextStyle ?? this.navTextStyle,
             titleText: titleText ?? this.titleText,
             backgroundColor: backgroundColor ?? this.backgroundColor,
             actions: actions ?? this.actions,
