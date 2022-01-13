@@ -27,8 +27,14 @@ class SiteNavBar {
   final Widget? drawerHeader;
   final Widget? drawerBody;
   final Widget? drawerFooter;
+  final AnimationType? navItemAnimation;
+  final double? elevation;
+  final bool? extendBodyBehindAppBar;
   SiteNavBar._SiteNavBar({
     this.fab,
+    this.elevation,
+    this.navItemAnimation,
+    this.extendBodyBehindAppBar,
     this.drawerFooter,
     this.drawerHeader,
     this.drawerBody,
@@ -57,10 +63,13 @@ class SiteNavBar {
     DeviceType type = DeviceType.desktop,
     Widget? title,
     double? height,
+    AnimationType? navItemAnimation,
     Widget? fab,
     BoxDecoration? customDecoration,
     Widget? drawerHeader,
     Widget? drawerBody,
+    double? elevation,
+    bool? extendBodyBehindAppBar,
     Widget? drawerFooter,
     TextStyle? navTextStyle,
     bool? showFab,
@@ -84,6 +93,8 @@ class SiteNavBar {
         enableDrawer: enableDrawer,
         body: body,
         fab: fab,
+        elevation: elevation,
+        extendBodyBehindAppBar: extendBodyBehindAppBar,
         customDecoration: customDecoration,
         drawerBody: drawerBody,
         drawerFooter: drawerFooter,
@@ -91,6 +102,7 @@ class SiteNavBar {
         navTextStyle: navTextStyle,
         navItemSpacing: navItemSpacing,
         showFab: showFab,
+        navItemAnimation: navItemAnimation,
         indicatorLineThickness: indicatorLineThickness,
         pageIndicator: pageIndicator,
         MAX_PAGE_WIDTH: MAX_PAGE_WIDTH,
@@ -107,6 +119,8 @@ class SiteNavBar {
 
   Widget getNavBar(
     DeviceType device, {
+        double? elevation,
+        bool? extendBodyBehindAppBar,
         PageIndicator? pageIndicator,
         double? indicatorLineThickness,
         NavItemPosition? itemPosition,
@@ -128,6 +142,7 @@ class SiteNavBar {
     Widget? leading,
     List<Widget>? actions,
     List<NavItem>? navItems,
+        AnimationType? navItemAnimation
   }) {
     Widget child = Container();
     switch (device) {
@@ -138,6 +153,9 @@ class SiteNavBar {
             fab: fab ?? this.fab,
             showFab: showFab ?? this.showFab,
             body: body,
+            navItemAnimation: navItemAnimation,
+            extendBodyBehindAppBar: extendBodyBehindAppBar ?? this.extendBodyBehindAppBar,
+            elevation: elevation ?? this.elevation,
             customDecoration: customDecoration??this.customDecoration,
             drawerBody: drawerBody??this.drawerBody,
             drawerFooter: drawerFooter??this.drawerFooter,
@@ -163,6 +181,9 @@ class SiteNavBar {
             enableDrawer: enableDrawer ??this.enableDrawer,
             showFab: showFab ?? this.showFab,
             body: body,
+            navItemAnimation: navItemAnimation,
+            extendBodyBehindAppBar: extendBodyBehindAppBar ?? this.extendBodyBehindAppBar,
+            elevation: elevation ?? this.elevation,
             customDecoration: customDecoration??this.customDecoration,
             drawerBody: drawerBody??this.drawerBody,
             drawerFooter: drawerFooter??this.drawerFooter,

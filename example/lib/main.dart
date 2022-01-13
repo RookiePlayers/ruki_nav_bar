@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ruki_nav_bar/ruki_nav_bar.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,32 +12,51 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Demo',
-      debugShowCheckedModeBanner: false,
-      home: LayoutBuilder(
-        builder: (_,constraints){
-          return SiteNavBar.get(
-            body: Container(
-              color: Colors.grey[100],
-            ),
-            indicatorLineThickness: 4,
-            customDecoration: BoxDecoration(borderRadius: BorderRadius.circular(30),border: Border.all(width: 2,color: Colors.blue) ),
-            drawerMode: NavDrawerMode.full,
-            pageIndicator: PageIndicator.outlined,
-            itemPosition: NavItemPosition.right,
-            drawerHeader: Container(),
-            navTextStyle: TextStyle(fontSize: 10),
-            drawerFooter: Container(height: 50,color: Colors.grey[200],),
-            leading: const Text("Logo",style: TextStyle(color: Colors.red,fontSize: 30),),
-            navItemSpacing: 8,
-            navItems: [
-              NavItem(relativeIndex: 0, label: "Home", activeColor: Colors.blue, onTap: (){}),
-              NavItem(relativeIndex: 1, label: "About us",activeColor: Colors.blue, onTap: (){}),
-              NavItem(relativeIndex: 2, label: "Contact us",activeColor: Colors.blue, onTap: (){}),
-            ]
-          ).getNavBar(DeviceType.desktop.currentDevice(constraints.maxWidth));
-        },
-      )
-    );
+        title: 'Demo',
+        debugShowCheckedModeBanner: false,
+        home: LayoutBuilder(
+          builder: (_, constraints) {
+            return SiteNavBar.get(
+                body: Container(
+                  color: Colors.red[100],
+                ),
+                indicatorLineThickness: 4,
+               backgroundColor: Colors.transparent,
+                extendBodyBehindAppBar: true,
+
+                drawerMode: NavDrawerMode.full,
+                pageIndicator: PageIndicator.line,
+                itemPosition: NavItemPosition.right,
+                drawerHeader: Container(),
+                navTextStyle: const TextStyle(fontSize: 13, color: Colors.grey),
+                drawerFooter: Container(
+                  height: 50,
+                  color: Colors.grey[200],
+                ),
+                leading: const Text(
+                  "Logo",
+                  style: TextStyle(color: Colors.red, fontSize: 30),
+                ),
+                navItemSpacing: 8,
+                navItems: [
+                  NavItem(
+                      relativeIndex: 0,
+                      label: "Home",
+                      activeColor: Colors.blue,
+                      onTap: () {}),
+                  NavItem(
+                      relativeIndex: 1,
+                      label: "About us",
+                      activeColor: Colors.blue,
+                      onTap: () {}),
+                  NavItem(
+                      relativeIndex: 2,
+                      label: "Contact us",
+                      activeColor: Colors.blue,
+                      onTap: () {}),
+                ]).getNavBar(
+                DeviceType.desktop.currentDevice(constraints.maxWidth));
+          },
+        ));
   }
 }

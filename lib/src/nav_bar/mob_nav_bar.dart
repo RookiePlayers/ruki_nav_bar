@@ -13,6 +13,7 @@ class MobNavBar extends NavBar {
     double? height,
     PageIndicator? pageIndicator,
     double? indicatorLineThickness,
+    AnimationType? navItemAnimation,
     NavItemPosition? itemPosition,
     String? titleText,
     BoxDecoration? customDecoration,
@@ -24,6 +25,8 @@ class MobNavBar extends NavBar {
     NavDrawerMode? drawerMode,
     Color? backgroundColor,
     Widget? fab,
+    double? elevation,
+    bool? extendBodyBehindAppBar,
     TextStyle? navTextStyle,
     bool? showFab,
     double? MAX_PAGE_WIDTH,
@@ -33,8 +36,11 @@ class MobNavBar extends NavBar {
 
 }) : super(
     key: key,
+    navItemAnimation: navItemAnimation,
     title: title,
     body: body,
+    elevation: elevation,
+    extendBodyBehindAppBar: extendBodyBehindAppBar,
     fab: fab,
       customDecoration: customDecoration,
       drawerBody: drawerBody,
@@ -61,7 +67,7 @@ class MobNavBar extends NavBar {
   AppBar buildNavBar(BuildContext context) {
     // TODO: implement buildNavBar
     return AppBar(
-      elevation: 0,
+      elevation: elevation ?? 0,
       leadingWidth: enableDrawer==true ? 120 : 75,
       leading: Padding(
         padding: const EdgeInsets.only(left:5.0),

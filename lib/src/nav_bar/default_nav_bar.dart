@@ -11,6 +11,7 @@ class DefaultNavBar extends NavBar {
       {Key? key,
       required Widget title,
       bool? enableDrawer,
+        AnimationType? navItemAnimation,
       PageIndicator? pageIndicator,
       double? indicatorLineThickness,
       double? height,
@@ -18,6 +19,8 @@ class DefaultNavBar extends NavBar {
       double? navItemSpacing,
       TextStyle? navTextStyle,
       String? titleText,
+        double? elevation,
+        bool? extendBodyBehindAppBar,
       NavDrawerMode? drawerMode,
       Widget? fab,
       bool? showFab,
@@ -33,7 +36,10 @@ class DefaultNavBar extends NavBar {
       List<Widget>? actions})
       : super(
             key: key,
+            navItemAnimation: navItemAnimation,
             fab: fab,
+            elevation: elevation,
+            extendBodyBehindAppBar: extendBodyBehindAppBar,
             indicatorLineThickness: indicatorLineThickness,
             pageIndicator: pageIndicator,
             navItemSpacing: navItemSpacing ?? 10,
@@ -60,7 +66,6 @@ class DefaultNavBar extends NavBar {
   AppBar buildNavBar(BuildContext context) {
     // TODO: implement buildNavBar
     return AppBar(
-
       leading: Padding(
         padding: const EdgeInsets.only(left:5.0),
         child: Center(child: Row(
@@ -78,7 +83,7 @@ class DefaultNavBar extends NavBar {
         )),
       ),
       leadingWidth: enableDrawer==true ? 120 : 75,
-      elevation: 0,
+      elevation: elevation??0,
       iconTheme: Theme.of(context)
           .iconTheme
           .copyWith(color: Theme.of(context).textTheme.bodyText1!.color),
@@ -128,6 +133,7 @@ class DefaultNavBar extends NavBar {
               : Alignment.centerRight,
           child: NavListTile(
             data: e,
+            animationType: navItemAnimation??AnimationType.fade,
             navTextStyle: navTextStyle,
             customDecoration: customDecoration,
             pageIndicator: pageIndicator??PageIndicator.none,

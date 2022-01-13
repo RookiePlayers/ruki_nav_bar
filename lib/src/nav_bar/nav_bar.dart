@@ -29,13 +29,19 @@ abstract class NavBar extends PreferredSize {
 
   final String? titleText;
   final Color? backgroundColor;
+  final double? elevation;
+  final bool? extendBodyBehindAppBar;
   final Widget? leading;
   final List<NavItem> items;
   final List<Widget>? actions;
   final double navItemSpacing;
+  final AnimationType? navItemAnimation;
   NavBar(
       {Key? key,
       required this.title,
+        this.navItemAnimation,
+        this.elevation,
+        this.extendBodyBehindAppBar,
       this.height = kToolbarHeight,
       this.drawerFooter,
       this.drawerHeader,
@@ -66,6 +72,7 @@ abstract class NavBar extends PreferredSize {
     // TODO: implement build
     return Scaffold(
       appBar: buildNavBar(context),
+      extendBodyBehindAppBar: extendBodyBehindAppBar??false,
       key: scaffoldKey,
       floatingActionButton: showFab ? fab : null,
       drawer: (enableDrawer == true && drawerMode == NavDrawerMode.left) ? buildNavDrawer(context) : null,
@@ -83,6 +90,7 @@ abstract class NavBar extends PreferredSize {
               Navigator.pop(context);
         },
         customDecoration: customDecoration,
+        navItemAnimation:navItemAnimation??AnimationType.fade,
             drawerHeader: drawerHeader,
         navTextStyle: navTextStyle,
             drawerBody: drawerBody,

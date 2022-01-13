@@ -20,10 +20,12 @@ class NavDrawer extends StatelessWidget {
   final NavItemPosition? itemsPosition;
   final double? indicatorLineThickness;
   final VoidCallback? onClose;
+  final AnimationType? navItemAnimation;
   const NavDrawer(
       {Key? key,
         this.onClose,
       required this.navItems,
+        this.navItemAnimation,
         this.navTextStyle,
         this.itemSpacing,
         this.itemsPosition = NavItemPosition.center,
@@ -71,6 +73,7 @@ class NavDrawer extends StatelessWidget {
                   alignment: itemsPosition == NavItemPosition.center ? Alignment.center : itemsPosition == NavItemPosition.left ? Alignment.centerLeft : Alignment.centerRight,
                           margin:  EdgeInsets.symmetric(vertical: itemSpacing??10),
                           child: NavListTile(
+                            animationType: navItemAnimation!,
                             customDecoration: customDecoration,
                               navTextStyle: navTextStyle,
                               pageIndicator: pageIndicator!,
