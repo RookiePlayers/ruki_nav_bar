@@ -29,6 +29,8 @@ class SiteNavBar {
   final Widget? drawerFooter;
   final AnimationType? navItemAnimation;
   final double? elevation;
+  final Color? appBarColor;
+  final Color? drawerColor;
   final bool? extendBodyBehindAppBar;
   SiteNavBar._SiteNavBar({
     this.fab,
@@ -38,6 +40,8 @@ class SiteNavBar {
     this.drawerFooter,
     this.drawerHeader,
     this.drawerBody,
+    this.appBarColor,
+    this.drawerColor,
     this.customDecoration,
     this.indicatorLineThickness,
     this.pageIndicator,
@@ -63,6 +67,8 @@ class SiteNavBar {
     DeviceType type = DeviceType.desktop,
     Widget? title,
     double? height,
+    Color? appBarColor,
+    Color? drawerColor,
     AnimationType? navItemAnimation,
     Widget? fab,
     BoxDecoration? customDecoration,
@@ -111,6 +117,8 @@ class SiteNavBar {
         height: height ?? kToolbarHeight,
         titleText: titleText,
         backgroundColor: backgroundColor,
+        appBarColor: appBarColor,
+        drawerColor: drawerColor,
         actions: actions ?? [],
         items: navItems ?? [],
         leading: leading);
@@ -120,6 +128,8 @@ class SiteNavBar {
   Widget getNavBar(
     DeviceType device, {
         double? elevation,
+        Color? appBarColor,
+        Color? drawerColor,
         bool? extendBodyBehindAppBar,
         PageIndicator? pageIndicator,
         double? indicatorLineThickness,
@@ -153,7 +163,7 @@ class SiteNavBar {
             fab: fab ?? this.fab,
             showFab: showFab ?? this.showFab,
             body: body,
-            navItemAnimation: navItemAnimation,
+            navItemAnimation: navItemAnimation ?? this.navItemAnimation,
             extendBodyBehindAppBar: extendBodyBehindAppBar ?? this.extendBodyBehindAppBar,
             elevation: elevation ?? this.elevation,
             customDecoration: customDecoration??this.customDecoration,
@@ -169,6 +179,8 @@ class SiteNavBar {
             height: height ?? this.height,
             navTextStyle: navTextStyle ?? this.navTextStyle,
             titleText: titleText ?? this.titleText,
+            appBarColor: appBarColor ?? this.appBarColor,
+            drawerColor: drawerColor ?? this.drawerColor,
             backgroundColor: backgroundColor ?? this.backgroundColor,
             actions: actions ?? this.actions,
             leading: leading ?? this.leading);
@@ -181,7 +193,7 @@ class SiteNavBar {
             enableDrawer: enableDrawer ??this.enableDrawer,
             showFab: showFab ?? this.showFab,
             body: body,
-            navItemAnimation: navItemAnimation,
+            navItemAnimation: navItemAnimation ?? this.navItemAnimation,
             extendBodyBehindAppBar: extendBodyBehindAppBar ?? this.extendBodyBehindAppBar,
             elevation: elevation ?? this.elevation,
             customDecoration: customDecoration??this.customDecoration,
@@ -197,6 +209,8 @@ class SiteNavBar {
             height: height ?? this.height,
             navTextStyle: navTextStyle ?? this.navTextStyle,
             titleText: titleText ?? this.titleText,
+            appBarColor: appBarColor ?? this.appBarColor,
+            drawerColor: drawerColor ?? this.drawerColor,
             backgroundColor: backgroundColor ?? this.backgroundColor,
             actions: actions ?? this.actions,
             leading: leading ?? this.leading);

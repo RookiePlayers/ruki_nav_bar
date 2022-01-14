@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import '../../ruki_nav_bar.dart';
 import 'nav_list_tile.dart';
 import 'nav_drawer.dart';
 import 'nav_item.dart';
@@ -29,6 +30,8 @@ class MobNavBar extends NavBar {
     bool? extendBodyBehindAppBar,
     TextStyle? navTextStyle,
     bool? showFab,
+    Color? appBarColor,
+    Color? drawerColor,
     double? MAX_PAGE_WIDTH,
     Widget? leading,
     List<Widget>? actions,
@@ -36,6 +39,7 @@ class MobNavBar extends NavBar {
 
 }) : super(
     key: key,
+      deviceType:DeviceType.mobile,
     navItemAnimation: navItemAnimation,
     title: title,
     body: body,
@@ -58,6 +62,8 @@ class MobNavBar extends NavBar {
     enableDrawer: true,
     drawerMode: drawerMode??NavDrawerMode.left,
     titleText: titleText,
+      appBarColor: appBarColor,
+      drawerColor: drawerColor,
     backgroundColor: backgroundColor,
     actions: actions??[],
     leading: leading
@@ -74,7 +80,7 @@ class MobNavBar extends NavBar {
         child: Center(child: Row(
           children: [
             enableDrawer ?? false
-                ? drawerMode == NavDrawerMode.left ? IconButton(
+                ? drawerMode == NavDrawerMode.left  || drawerMode == NavDrawerMode.collapsableLeft ? IconButton(
               icon: const Icon(Icons.menu),
               onPressed: () {
                 scaffoldKey.currentState!.openDrawer();
@@ -88,7 +94,7 @@ class MobNavBar extends NavBar {
       iconTheme: Theme.of(context)
           .iconTheme
           .copyWith(color: Theme.of(context).textTheme.bodyText1!.color),
-      backgroundColor: backgroundColor ?? Colors.transparent,
+      backgroundColor: appBarColor ?? Colors.transparent,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -101,7 +107,7 @@ class MobNavBar extends NavBar {
       actions: [
         ...?actions,
         enableDrawer ?? false
-            ? drawerMode == NavDrawerMode.right || drawerMode == NavDrawerMode.full ? IconButton(
+            ? drawerMode == NavDrawerMode.right || drawerMode == NavDrawerMode.full || drawerMode == NavDrawerMode.collapsableRight ? IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {
             scaffoldKey.currentState!.openEndDrawer();

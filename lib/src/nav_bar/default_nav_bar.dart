@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ruki_nav_bar/ruki_nav_bar.dart';
 
 import 'nav_drawer.dart';
 import 'nav_item.dart';
@@ -11,7 +12,7 @@ class DefaultNavBar extends NavBar {
       {Key? key,
       required Widget title,
       bool? enableDrawer,
-        AnimationType? navItemAnimation,
+      AnimationType? navItemAnimation,
       PageIndicator? pageIndicator,
       double? indicatorLineThickness,
       double? height,
@@ -19,23 +20,28 @@ class DefaultNavBar extends NavBar {
       double? navItemSpacing,
       TextStyle? navTextStyle,
       String? titleText,
-        double? elevation,
-        bool? extendBodyBehindAppBar,
+      double? elevation,
+      bool? extendBodyBehindAppBar,
       NavDrawerMode? drawerMode,
       Widget? fab,
       bool? showFab,
-        BoxDecoration? customDecoration,
-        Widget? drawerHeader,
-        Widget? drawerBody,
-        Widget? drawerFooter,
+      BoxDecoration? customDecoration,
+      Widget? drawerHeader,
+      Widget? drawerBody,
+      Widget? drawerFooter,
       Color? backgroundColor,
+      Color? appBarColor,
+      Color? drawerColor,
       required Widget body,
       double? MAX_PAGE_WIDTH,
       Widget? leading,
       required List<NavItem> items,
       List<Widget>? actions})
       : super(
+      deviceType:DeviceType.desktop,
             key: key,
+            appBarColor: appBarColor,
+            drawerColor: drawerColor,
             navItemAnimation: navItemAnimation,
             fab: fab,
             elevation: elevation,
@@ -45,11 +51,11 @@ class DefaultNavBar extends NavBar {
             navItemSpacing: navItemSpacing ?? 10,
             showFab: showFab ?? false,
             body: body,
-          customDecoration: customDecoration,
-          drawerBody: drawerBody,
-          drawerFooter: drawerFooter,
-          drawerHeader: drawerHeader,
-          enableDrawer: enableDrawer ?? false,
+            customDecoration: customDecoration,
+            drawerBody: drawerBody,
+            drawerFooter: drawerFooter,
+            drawerHeader: drawerHeader,
+            enableDrawer: enableDrawer ?? false,
             navTextStyle: navTextStyle,
             title: title,
             MAX_PAGE_WIDTH: MAX_PAGE_WIDTH ?? 1140,
@@ -67,54 +73,62 @@ class DefaultNavBar extends NavBar {
     // TODO: implement buildNavBar
     return AppBar(
       leading: Padding(
-        padding: const EdgeInsets.only(left:5.0),
-        child: Center(child: Row(
+        padding: const EdgeInsets.only(left: 5.0),
+        child: Center(
+            child: Row(
           children: [
             enableDrawer ?? false
-                ? drawerMode == NavDrawerMode.left ? IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                scaffoldKey.currentState!.openDrawer();
-              },
-            ) : Container()
+                ? drawerMode == NavDrawerMode.left
+                    ? IconButton(
+                        icon: const Icon(Icons.menu),
+                        onPressed: () {
+                          scaffoldKey.currentState!.openDrawer();
+                        },
+                      )
+                    : Container()
                 : Container(),
-            leading??Container()
+            leading ?? Container()
           ],
         )),
       ),
-      leadingWidth: enableDrawer==true ? 120 : 75,
-      elevation: elevation??0,
+      leadingWidth: enableDrawer == true ? 120 : 75,
+      elevation: elevation ?? 0,
       iconTheme: Theme.of(context)
           .iconTheme
           .copyWith(color: Theme.of(context).textTheme.bodyText1!.color),
-      backgroundColor: backgroundColor ?? Colors.transparent,
+      backgroundColor: appBarColor ?? Colors.transparent,
       title: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
         child: Container(
-
           constraints: BoxConstraints(maxWidth: MAX_PAGE_WIDTH),
           child: Row(
             mainAxisAlignment: itemsPosition == NavItemPosition.center
                 ? MainAxisAlignment.center
                 : itemsPosition == NavItemPosition.left
-                ? MainAxisAlignment.start
-                : MainAxisAlignment.end,
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.end,
             children: [
-              Row(children: [title,...( enableDrawer??false ? [] : _buildNavList(context))]),
-                  ],
+              Row(children: [
+                title,
+                ...(enableDrawer ?? false ? [] : _buildNavList(context))
+              ]),
+            ],
           ),
         ),
       ),
       actions: [
         ...?actions,
         enableDrawer ?? false
-            ? drawerMode == NavDrawerMode.right || drawerMode == NavDrawerMode.full ? IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {
-                  scaffoldKey.currentState!.openEndDrawer();
-                },
-              ) : Container()
+            ? drawerMode == NavDrawerMode.right ||
+                    drawerMode == NavDrawerMode.full
+                ? IconButton(
+                    icon: const Icon(Icons.menu),
+                    onPressed: () {
+                      scaffoldKey.currentState!.openEndDrawer();
+                    },
+                  )
+                : Container()
             : Container(),
       ],
     );
@@ -122,27 +136,24 @@ class DefaultNavBar extends NavBar {
 
   List<Widget> _buildNavList(BuildContext context) {
     return items.map((e) {
-      e.minimized = false;
       return Container(
-          margin: EdgeInsets.symmetric(
-              horizontal: navItemSpacing, vertical: 3),
+          margin: EdgeInsets.symmetric(horizontal: navItemSpacing, vertical: 3),
           alignment: itemsPosition == NavItemPosition.center
               ? Alignment.center
               : itemsPosition == NavItemPosition.left
-              ? Alignment.centerLeft
-              : Alignment.centerRight,
+                  ? Alignment.centerLeft
+                  : Alignment.centerRight,
           child: NavListTile(
             data: e,
-            animationType: navItemAnimation??AnimationType.fade,
+            itemPosition: itemsPosition,
+            animationType: navItemAnimation ?? AnimationType.fade,
             navTextStyle: navTextStyle,
             customDecoration: customDecoration,
-            pageIndicator: pageIndicator??PageIndicator.none,
+            pageIndicator: pageIndicator ?? PageIndicator.none,
             indicatorLineThickness: indicatorLineThickness,
-            selectedPageIndex:
-            PageTrackerContext.of<int>(context).currentData,
+            selectedPageIndex: PageTrackerContext.of<int>(context).currentData,
             onPageSelected: (index) {
-              PageTrackerContext.of<int>(context)
-                  .updateData(data: index);
+              PageTrackerContext.of<int>(context).updateData(data: index);
             },
           ));
     }).toList();
